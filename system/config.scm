@@ -13,9 +13,6 @@
              (gnu services desktop)
              (nongnu packages linux)
              (nongnu system linux-initrd)
-	     (services tailscale)
-	     (packages tailscale))
-
 (use-service-modules cups desktop networking ssh xorg)
 
 (operating-system
@@ -39,9 +36,16 @@
   ;; Packages installed system-wide.  Users can also install packages
   ;; under their own account: use 'guix search KEYWORD' to search
   ;; for packages and 'guix install PACKAGE' to install a package.
-  (packages (append (map specification->package
-                         '("vim" "firefox" "neovim" "emacs" "openssh" "git" "wget" "curl" "tailscale"))
-                    %base-packages))
+  (packages (append (specifications->package (list "vim"
+						   "firefox"
+						   "neovim"
+						   "emacs"
+						   "openssh"
+						   "git"
+						   "wget"
+						   "curl"
+						   "neovim"))
+		    %base-packages))
 
   ;; Below is the list of system services.  To search for available
   ;; services, run 'guix system search KEYWORD' in a terminal.
@@ -57,10 +61,10 @@
                                   (authorized-keys
                                    (append (list (local-file "./nonguix-signing-key.pub"))
                                            %default-authorized-guix-keys))))))
-   ;;(append (list (service gnome-desktop-service-type)
-   ;;              (service cups-service-type)
-   ;;              (set-xorg-configuration
-   ;;               (xorg-configuration (keyboard-layout keyboard-layout))))
+   (append (list (service gnome-desktop-service-type)
+                 (service cups-service-type)
+                 (set-xorg-configuration
+                  (xorg-configuration (keyboard-layout keyboard-layout)))))
   (bootloader (bootloader-configuration
                 (bootloader grub-efi-bootloader)
                 (targets (list "/boot/efi"))
