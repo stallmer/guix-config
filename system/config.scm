@@ -47,6 +47,7 @@
 						  "wget"
 						  "curl"
 						  "neovim"
+						  "iptables"
 
 						  ;;Sway
 						  "sway"
@@ -61,18 +62,19 @@
   ;; Below is the list of system services.  To search for available
   ;; services, run 'guix system search KEYWORD' in a terminal.
   (services
-    (modify-services %desktop-services
-		     (delete gdm-service-type)
-		     ;; Get nonguix substitutes
-		     (guix-service-type config =>
-					(guix-configuration
-					  (inherit config)
-					  (substitute-urls
-					    (append (list "https://substitutes.nonguix.org")
-						    %default-substitute-urls))
-					  (authorized-keys
-					    (append (list (local-file "./nonguix-signing-key.pub"))
-					    %default-authorized-guix-keys))))))
+   ;;(append (list (service tailscaled-service-type))
+	   (modify-services %desktop-services
+			    (delete gdm-service-type)
+			    ;; Get nonguix substitutes
+			    (guix-service-type config =>
+					       (guix-configuration
+						(inherit config)
+						(substitute-urls
+						 (append (list "https://substitutes.nonguix.org")
+							 %default-substitute-urls))
+						(authorized-keys
+						 (append (list (local-file "./nonguix-signing-key.pub"))
+							 %default-authorized-guix-keys))))))
    ;;(append (list (service gnome-desktop-service-type)
    ;;             (service cups-service-type)
    ;;              (set-xorg-configuration
