@@ -32,7 +32,7 @@
                   (comment "Stephen Daunheimer")
                   (group "users")
                   (home-directory "/home/stephen")
-                  (supplementary-groups '("wheel" "netdev" "audio" "video")))
+                  (supplementary-groups '("wheel" "netdev" "audio" "video" "input")))
                 %base-user-accounts))
 
   ;; Packages installed system-wide.  Users can also install packages
@@ -55,6 +55,7 @@
 						  "swaylock"
 						  "kitty"
 						  "waybar"))
+						  
 		    %base-packages))
 
   ;; Below is the list of system services.  To search for available

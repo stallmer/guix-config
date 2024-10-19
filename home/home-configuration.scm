@@ -28,14 +28,18 @@
 					    "wl-clipboard"
 					    "fuzzel"
 					    "fzf"
+
+					    ;; Fonts
 					    "font-google-noto-emoji"
 					    "font-google-noto"
 					    "font-jetbrains-mono"
+
 					    "fish"
 					    "jq"
 					    "pipewire"
 					    "wireplumber"
 					    "brightnessctl"
+					    "evremap"
 					    )))
 
   ;; Below is the list of Home services.  To search for available
