@@ -10,12 +10,12 @@
 ;; Indicate which modules to import to access the variables
 ;; used in this configuration.
 (use-modules (gnu)
-             ;;(gnu services desktop)
+             (gnu services desktop)
              (nongnu packages linux)
              (nongnu system linux-initrd)
 	     (ice-9 match))
 (use-package-modules wm)
-(use-service-modules cups desktop networking ssh xorg)
+(use-service-modules cups networking ssh xorg)
 
 (operating-system
   (kernel linux)
@@ -62,6 +62,7 @@
   ;; services, run 'guix system search KEYWORD' in a terminal.
   (services
     (modify-services %desktop-services
+		     (delete gdm-service-type)
 		     ;; Get nonguix substitutes
 		     (guix-service-type config =>
 					(guix-configuration
