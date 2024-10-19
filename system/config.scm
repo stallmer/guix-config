@@ -10,7 +10,7 @@
 ;; Indicate which modules to import to access the variables
 ;; used in this configuration.
 (use-modules (gnu)
-             (gnu services desktop)
+             ;;(gnu services desktop)
              (nongnu packages linux)
              (nongnu system linux-initrd)
 	     (ice-9 match))
@@ -54,24 +54,24 @@
 						  "swayidle"
 						  "swaylock"
 						  "kitty"
-						  "waybar"))
-						  
+						  "waybar"
+						  "evremap"))
 		    %base-packages))
 
   ;; Below is the list of system services.  To search for available
   ;; services, run 'guix system search KEYWORD' in a terminal.
-  (services (modify-services (cons (service gnome-desktop-service-type)
-                                   %desktop-services)
-              ;; Get nonguix substitutes
-              (guix-service-type config =>
-                                 (guix-configuration
-                                  (inherit config)
-                                  (substitute-urls
-                                   (append (list "https://substitutes.nonguix.org")
-                                           %default-substitute-urls))
-                                  (authorized-keys
-                                   (append (list (local-file "nonguix-signing-key.pub"))
-                                           %default-authorized-guix-keys))))))
+  (services
+    (modify-services %desktop-services
+		     ;; Get nonguix substitutes
+		     (guix-service-type config =>
+					(guix-configuration
+					  (inherit config)
+					  (substitute-urls
+					    (append (list "https://substitutes.nonguix.org")
+						    %default-substitute-urls))
+					  (authorized-keys
+					    (append (list (local-file "./nonguix-signing-key.pub"))
+					    %default-authorized-guix-keys))))))
    ;;(append (list (service gnome-desktop-service-type)
    ;;             (service cups-service-type)
    ;;              (set-xorg-configuration

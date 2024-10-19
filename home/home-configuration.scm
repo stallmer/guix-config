@@ -39,7 +39,6 @@
 					    "pipewire"
 					    "wireplumber"
 					    "brightnessctl"
-					    "evremap"
 					    )))
 
   ;; Below is the list of Home services.  To search for available
