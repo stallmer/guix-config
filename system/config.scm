@@ -18,6 +18,15 @@
 (use-package-modules wm)
 (use-service-modules cups networking ssh xorg)
 
+(define etc-sudoers-config
+  (plain-file "etc-sudoers-config"
+	      "\
+root    ALL=(ALL) ALL
+%wheel  ALL=(ALL) ALL
+%wheel  ALL=(ALL) NOPASSWD: /run/current/profile/bin/evremap
+%wheel  ALL=(ALL) NOPASSWD: /run/current-system/profile/bin/loginctl
+"))
+
 (operating-system
   (kernel linux)
   (initrd microcode-initrd)
@@ -26,6 +35,7 @@
   (timezone "America/Los_Angeles")
   (keyboard-layout (keyboard-layout "us"))
   (host-name "lemur")
+  (sudoers-file etc-sudoers-config)
 
   ;; The list of user accounts ('root' is implicit).
   (users (cons* (user-account
@@ -33,9 +43,8 @@
                   (comment "Stephen Daunheimer")
                   (group "users")
                   (home-directory "/home/stephen")
-                  (supplementary-groups '("wheel" "netdev" "audio" "video" "input")))
+                  (supplementary-groups '("wheel" "netdev" "audio" "video" "input" "lp")))
                 %base-user-accounts))
-
   ;; Packages installed system-wide.  Users can also install packages
   ;; under their own account: use 'guix search KEYWORD' to search
   ;; for packages and 'guix install PACKAGE' to install a package.

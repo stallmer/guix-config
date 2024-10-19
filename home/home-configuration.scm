@@ -25,6 +25,7 @@
 					    "flatpak"
 					    "xdg-utils"
 					    "xdg-desktop-portal-gtk"
+					    "xdg-desktop-portal-wlr"
 					    "wl-clipboard"
 					    "fuzzel"
 					    "fzf"
@@ -50,6 +51,8 @@
      (service home-syncthing-service-type)
      (service home-bash-service-type
 	      (home-bash-configuration
+		;; Add custom shell scripts to PATH
+	       (environment-variables '(("PATH" . "$HOME/.local/bin:$PATH")))
 	       (aliases '())
 	       (bashrc (list (local-file "/home/stephen/.bashrc" "bashrc")))
 	       (bash-profile (list (local-file
