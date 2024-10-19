@@ -13,6 +13,7 @@
              (gnu services desktop)
              (nongnu packages linux)
              (nongnu system linux-initrd)
+	     (btv tailscale)
 	     (ice-9 match))
 (use-package-modules wm)
 (use-service-modules cups networking ssh xorg)
@@ -56,13 +57,15 @@
 						  "swaylock"
 						  "kitty"
 						  "waybar"
+						  "tailscale"
 						  "evremap"))
 		    %base-packages))
 
   ;; Below is the list of system services.  To search for available
   ;; services, run 'guix system search KEYWORD' in a terminal.
   (services
-   ;;(append (list (service tailscaled-service-type))
+   (append (list (service tailscale-service-type)
+		 (service bluetooth-service-type))
 	   (modify-services %desktop-services
 			    (delete gdm-service-type)
 			    ;; Get nonguix substitutes
@@ -74,7 +77,7 @@
 							 %default-substitute-urls))
 						(authorized-keys
 						 (append (list (local-file "./nonguix-signing-key.pub"))
-							 %default-authorized-guix-keys))))))
+							 %default-authorized-guix-keys)))))))
    ;;(append (list (service gnome-desktop-service-type)
    ;;             (service cups-service-type)
    ;;              (set-xorg-configuration
