@@ -48,10 +48,11 @@
 					   "flatpak"
 					   "fzf"
 
-					   ;; Fonts
+					   ;; Fonts and symbols
 					   "font-google-noto-emoji"
 					   "font-google-noto"
 					   "font-jetbrains-mono"
+					   "hicolor-icon-theme"
 					   )))
 
   ;; Below is the list of Home services.  To search for available
