@@ -16,8 +16,4 @@
 	  "c72e15e84c4a9d199303aa40a81a95939db0cfee"
 	  (openpgp-fingerprint
 	   "9E53FC33B8328C745E7B31F70226C10D7877B741"))))
-       ;; (channel
-       ;; 	(name 'guix-config)
-       ;; 	(url "https://git.steda.net/stephen/guix-config")
-       ;; 	(branch "main"))
        %default-channels)

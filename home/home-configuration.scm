@@ -18,29 +18,41 @@
 (home-environment
   ;; Below is the list of packages that will show up in your
   ;; Home profile, under ~/.guix-home/profile.
-  (packages (specifications->packages (list "stow"
-					    "syncthing"
-					    "mpv"
-					    "yt-dlp"
-					    "flatpak"
-					    "xdg-utils"
-					    "xdg-desktop-portal-gtk"
-					    "xdg-desktop-portal-wlr"
-					    "wl-clipboard"
-					    "fuzzel"
-					    "fzf"
+ (packages (specifications->packages (list "sway"
+					   "swaybg"
+					   "swayidle"
+					   "swaylock"
+					   "kitty"
+					   "waybar"
+					   "xdg-utils"
+					   "xdg-desktop-portal-gtk"
+					   "xdg-desktop-portal-wlr"
+					   "wl-clipboard"
+					   "fuzzel"
 
-					    ;; Fonts
-					    "font-google-noto-emoji"
-					    "font-google-noto"
-					    "font-jetbrains-mono"
+					   ;; CLI Tools
+					   "fish"
+                                           "neovim"
+                                           "tealdeer"
+					   "jq"
+					   "pipewire"
+					   "wireplumber"
+					   "brightnessctl"
+					   "stow"
+					   
+					   ;; GUI Tools
+					   "firefox"
+					   "syncthing"
+					   "mpv"
+					   "yt-dlp"
+					   "flatpak"
+					   "fzf"
 
-					    "fish"
-					    "jq"
-					    "pipewire"
-					    "wireplumber"
-					    "brightnessctl"
-					    )))
+					   ;; Fonts
+					   "font-google-noto-emoji"
+					   "font-google-noto"
+					   "font-jetbrains-mono"
+					   )))
 
   ;; Below is the list of Home services.  To search for available
   ;; services, run 'guix home search KEYWORD' in a terminal.
