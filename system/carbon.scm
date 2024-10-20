@@ -2,6 +2,7 @@
 ;; used in this configuration.
 (use-modules (gnu)
 	     (gnu services desktop)
+	     (gnu services base)
 	     (nongnu packages linux)
              (nongnu system linux-initrd)
 	     (btv tailscale)
