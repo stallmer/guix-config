@@ -29,7 +29,8 @@
 					  "netdev"
 					  "audio"
 					  "video"
-					  "input")))
+					  "input"
+					  "lp")))
                 %base-user-accounts))
 
   ;; Packages installed system-wide.  Users can also install packages
