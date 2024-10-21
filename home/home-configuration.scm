@@ -1,4 +1,6 @@
-;        (gnu services)
+(use-modules (gnu home)
+             (gnu services)
+	     (gnu packages)
              (guix gexp)
 	     (gnu home services)
 	     (gnu home services sound)
@@ -43,6 +45,7 @@
 					   "firefox"
 
 					   ;; Fonts and symbols
+					   "jetbrains-mono-nerd-font"
 					   "papirus-icon-theme"
 					   "breeze-icons"
 					   "gnome-themes-extra"
@@ -68,6 +71,8 @@
 					   "gst-plugins-bad"
 					   "gst-plugins-ugly"
 					   "gst-libav"
+					   "libva"
+					   "libva-utils"
 
 					   ;; File syncing
 					   "syncthing"

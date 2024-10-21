@@ -42,8 +42,8 @@
 						  "wget"
 
 						  "tailscale"
-
-						  "gsettings-desktop-schemas"))
+						  "intel-media-driver"
+						  ))
 		    %base-packages))
 
   ;; Below is the list of system services.  To search for available
