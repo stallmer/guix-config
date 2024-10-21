@@ -13,8 +13,8 @@
              (gnu home services shells)
 	     (gnu home services desktop)
 	     (gnu home services syncthing)
-	     (gnu home services ssh))
-
+	     (gnu home services ssh)
+	     (gnu packages glib))
 (home-environment
   ;; Below is the list of packages that will show up in your
   ;; Home profile, under ~/.guix-home/profile.
@@ -24,13 +24,19 @@
 					   "swaylock"
 					   "kitty"
 					   "waybar"
+					   "grimshot"
+
+					   ;; Flapak and XD utilities
+					   "flatpak"
 					   "xdg-utils"
+					   ;;"xdg-desktop-portal"
 					   "xdg-desktop-portal-gtk"
 					   "xdg-desktop-portal-wlr"
+					   "xdg-dbus-proxy"
 					   "wl-clipboard"
 					   "fuzzel"
 
-					   ;; CLI Tools
+					   ;; CLI Programs
 					   "fish"
                                            "neovim"
                                            "tealdeer"
@@ -39,20 +45,44 @@
 					   "wireplumber"
 					   "brightnessctl"
 					   "stow"
+					   "fzf"
 					   
 					   ;; GUI Tools
 					   "firefox"
-					   "syncthing"
-					   "mpv"
-					   "yt-dlp"
-					   "flatpak"
-					   "fzf"
 
 					   ;; Fonts and symbols
+					   "papirus-icon-theme"
+					   "breeze-icons"
 					   "font-google-noto-emoji"
 					   "font-google-noto"
 					   "font-jetbrains-mono"
+					   "adwaita-icon-theme"
+					   "emacs-all-the-icons"
+					   "emacs-all-the-icons-dired"
+					   "font-awesome"
 					   "hicolor-icon-theme"
+
+					   ;; Audio and video playback
+					   "yt-dlp"
+					   "mpv"
+					   "mpv-mpris"
+					   "playerctl"
+					   "pavucontrol"
+					   "gstreamer"
+					   "gst-plugins-base"
+					   "gst-plugins-good"
+					   "gst-plugins-bad"
+					   "gst-plugins-ugly"
+					   "gst-libav"
+
+					   ;; File syncing
+					   "syncthing"
+					   "syncthing-gtk"
+
+					   ;; Misc utilities
+					   "zip"
+					   "unzip"
+					   "trash-cli"
 					   )))
 
   ;; Below is the list of Home services.  To search for available
@@ -65,12 +95,15 @@
      (service home-bash-service-type
 	      (home-bash-configuration
 		;; Add custom shell scripts to PATH
-	       (environment-variables '(("PATH" . "$HOME/.local/bin:$PATH")))
+	       (environment-variables '(("PATH" . "$HOME/.local/bin:$PATH")
+					("XDG_DATA_DIRS" . "$XDG_DATA_DIRS:$HOME/.local/share/flatpak/exports/share")
+					("XDG_DATA_DIRS" . "$XDG_DATA_DIRS:/var/lib/flatpak/exports/share")))
 	       (aliases '())
 	       (bashrc (list (local-file "/home/stephen/.bashrc" "bashrc")))
 	       (bash-profile (list (local-file
 				    "/home/stephen/.bash_profile"
-                                    "bash_profile")))))
+                                    "bash_profile"
+				    )))))
      (service home-openssh-service-type
 	      (home-openssh-configuration
 	       (hosts

@@ -40,7 +40,9 @@
 						  "curl"
 						  "wget"
 
-						  "tailscale"))
+						  "tailscale"
+
+						  "gsettings-desktop-schemas"))
 		    %base-packages))
 
   ;; Below is the list of system services.  To search for available
@@ -50,7 +52,6 @@
 		 (service bluetooth-service-type)
 		 (service gnome-desktop-service-type))
 	   (modify-services %desktop-services
-			    (delete gdm-service-type)
 			    ;; Get nonguix substitutes
 			    (guix-service-type config =>
 					       (guix-configuration
@@ -60,7 +61,9 @@
 							 %default-substitute-urls))
 						(authorized-keys
 						 (append (list (local-file "./nonguix-signing-key.pub"))
-							 %default-authorized-guix-keys)))))))
+							 %default-authorized-guix-keys))))
+			    (gdm-service-type config =>
+					      (gdm-configuration (inherit config) (wayland? #t))))))
 
   ;; ;; Below is the list of system services.  To search for available
   ;; ;; services, run 'guix system search KEYWORD' in a terminal.
