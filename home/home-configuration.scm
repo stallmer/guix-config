@@ -83,6 +83,13 @@
 					   "unzip"
 					   "trash-cli"
 					   "dunst"
+
+					   ;; GNOME Extensions
+					   "gnome-shell-extension-appindicator"
+					   "gnome-shell-extension-dash-to-dock"
+					   "gnome-shell-extension-blur-my-shell"
+					   "murrine"
+					   "sacss"
 					   )))
 
   ;; Below is the list of Home services.  To search for available
