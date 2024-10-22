@@ -26,7 +26,7 @@
 					   "xdg-utils"
 					   ;;"xdg-desktop-portal"
 					   "xdg-desktop-portal-gtk"
-					   "xdg-desktop-portal-wlr"
+					   ;;"xdg-desktop-portal-wlr"
 					   "xdg-dbus-proxy"
 					   "wl-clipboard"
 					   "fuzzel"
@@ -34,6 +34,7 @@
 					   ;; CLI Programs
 					   "fish"
                                            "neovim"
+					   "emacs"
                                            "tealdeer"
 					   "jq"
 					   "pipewire"
@@ -91,6 +92,7 @@
 					   "gnome-shell-extension-blur-my-shell"
 					   "murrine"
 					   "sassc"
+					   "gnome-tweaks"
 					   )))
 
   ;; Below is the list of Home services.  To search for available
