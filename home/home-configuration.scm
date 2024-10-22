@@ -18,6 +18,7 @@
 					   "swaylock"
 					   "kitty"
 					   "waybar"
+					   ;; "yambar-wayland"
 					   "grimshot"
 
 					   ;; Flapak and XD utilities
@@ -82,14 +83,14 @@
 					   "zip"
 					   "unzip"
 					   "trash-cli"
-					   "dunst"
+					   "mako"
 
 					   ;; GNOME Extensions
 					   "gnome-shell-extension-appindicator"
 					   "gnome-shell-extension-dash-to-dock"
 					   "gnome-shell-extension-blur-my-shell"
 					   "murrine"
-					   "sacss"
+					   "sassc"
 					   )))
 
   ;; Below is the list of Home services.  To search for available
