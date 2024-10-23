@@ -2,6 +2,7 @@
              (gnu services)
 	     (gnu packages)
              (guix gexp)
+	     (gnu packages games)ev
 	     (gnu home services)
 	     (gnu home services sound)
              (gnu home services shells)
@@ -105,19 +106,30 @@
    (list 
      (service home-pipewire-service-type)
      (service home-dbus-service-type)
+     (udev-rules-service 'steam-devices steam-devices-udev-rules)
      (service home-syncthing-service-type)
      (service home-bash-service-type
 	      (home-bash-configuration
 		;; Add custom shell scripts to PATH
 	       (environment-variables '(("PATH" . "$HOME/.local/bin:$PATH")
+
+					;; Ensure flatpaks are visible
 					("XDG_DATA_DIRS" . "$XDG_DATA_DIRS:$HOME/.local/share/flatpak/exports/share")
-					("XDG_DATA_DIRS" . "$XDG_DATA_DIRS:/var/lib/flatpak/exports/share")))
+
+					;; Set Wayland-specific environment variables
+					("XDG_CURRENT_DESKTOP" . "sway")
+					("XDG_SESSION_TYPE" . "wayland")
+					("MOZ_ENABLE_WAYLAND" . "1")))
 	       (aliases '())
 	       (bashrc (list (local-file "/home/stephen/.bashrc" "bashrc")))
-	       (bash-profile (list (local-file
-				    "/home/stephen/.bash_profile"
-                                    "bash_profile"
-				    )))))
+	       (bash-profile
+		`(,(plain-file "bash-sway-login"
+			       (string-append
+				"if [ -z \"$WAYLAND_DISPLAY\" ] && [ \"$XDG_VTNR\" -eq 1 ]; then\n"
+				"  exec sway\n"
+				"fi\n"))
+		  ,(local-file "/home/stephen/.bash_profile"
+			       "bash_profile")))))
      (service home-openssh-service-type
 	      (home-openssh-configuration
 	       (hosts
