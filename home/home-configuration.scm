@@ -17,6 +17,7 @@
 					   "swayidle"
 					   "swaylock"
 					   "kitty"
+					   "foot"
 					   "waybar"
 					   ;; "yambar-wayland"
 					   "grimshot"
@@ -66,7 +67,9 @@
 					   "mpv-mpris"
 					   "playerctl"
 					   "pavucontrol"
+					   "lm-sensors"
 					   "blueman"
+					   "bluez"
 					   "gstreamer"
 					   "gst-plugins-base"
 					   "gst-plugins-good"
@@ -85,6 +88,7 @@
 					   "unzip"
 					   "trash-cli"
 					   "mako"
+					   "feh"
 
 					   ;; GNOME Extensions
 					   "gnome-shell-extension-appindicator"

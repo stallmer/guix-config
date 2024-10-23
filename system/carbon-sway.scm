@@ -12,6 +12,11 @@
 
 (operating-system
   (kernel linux)
+  (kernel-arguments
+   '("quiet"
+     "splash"
+     ;; Disable PC speaker
+     "modprobe.blacklist=pcspkr,snd_pcsp"))
   (initrd microcode-initrd)
   (firmware (list linux-firmware sof-firmware))
   (locale "en_US.utf8")
@@ -44,7 +49,7 @@
 
 						  "tailscale"
 						  "intel-media-driver"
-						  "greetd"
+						  "xinitrc-xsession"
 						  ))
 		    %base-packages))
 
@@ -52,7 +57,11 @@
   ;; services, run 'guix system search KEYWORD' in a terminal.
   (services
    (append (list (service tailscale-service-type)
-		 (service bluetooth-service-type))
+		 (service bluetooth-service-type
+			  (bluetooth-configuration (fast-connectable? #t)
+						   (privacy 'device)
+						   (just-works-repairing 'always)))
+		 (simple-service 'blueman dbus-root-service-type (list blueman))
 	   ;; (service gnome-desktop-service-type))
 
 	   (modify-services %base-services
