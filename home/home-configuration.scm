@@ -20,16 +20,20 @@
 					   "kitty"
 					   "foot"
 					   "waybar"
-					   ;; "yambar-wayland"
 					   "grimshot"
+
+					   ;; Compatibility with older Xorg apps
+					   "xorg-server-xwayland"
 
 					   ;; Flapak and XD utilities
 					   "flatpak"
 					   "xdg-utils"
 					   ;;"xdg-desktop-portal"
 					   "xdg-desktop-portal-gtk"
-					   ;;"xdg-desktop-portal-wlr"
+					   "xdg-desktop-portal-wlr"
 					   "xdg-dbus-proxy"
+					   "shared-mime-info"
+					   (list glib "bin")
 					   "wl-clipboard"
 					   "fuzzel"
 

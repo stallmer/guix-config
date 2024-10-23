@@ -17,12 +17,16 @@
 	  (openpgp-fingerprint
 	   "9E53FC33B8328C745E7B31F70226C10D7877B741"))))
        (channel
-	(name 'nebula)
-	(url "https://git.sr.ht/~apoorv569/nebula")
-	(branch "master")
-	;; Enable signature verification:
-	(introduction
-         (make-channel-introduction "2f1be757b40f78456220823b71aace5277c5f33d"
-				    (openpgp-fingerprint
-				     "53B4 8418 D76A 3EF1 1BCC  92A8 4FDB 05CF 5D67 6283"))))
+	(name 'guix-stallmer)
+	(url (string-append "file://" (getenv "HOME") "/guix-stallmer"))
+	(branch "main"))
        %default-channels)
+       ;; (channel
+       ;; 	(name 'nebula)
+       ;; 	(url "https://git.sr.ht/~apoorv569/nebula")
+       ;; 	(branch "master")
+       ;; 	;; Enable signature verification:
+       ;; 	(introduction
+       ;;   (make-channel-introduction "2f1be757b40f78456220823b71aace5277c5f33d"
+       ;; 				    (openpgp-fingerprint
+       ;; 				     "53B4 8418 D76A 3EF1 1BCC  92A8 4FDB 05CF 5D67 6283"))))

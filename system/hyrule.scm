@@ -5,7 +5,9 @@
 	     (gnu services base)
 	     (nongnu packages linux)
 	     (nongnu system linux-initrd)
-	     (btv tailscale))
+	     (packages tailscale)
+	     (services tailscale)
+	     (ice-9 match))
 (use-package-modules wm)
 (use-service-modules cups desktop networking ssh xorg dbus)
 
@@ -48,7 +50,7 @@
   ;; Below is the list of system services.  To search for available
   ;; services, run 'guix system search KEYWORD' in a terminal.
   (services
-   (append (list (service tailscale-service-type)
+   (append (list (service tailscaled-service-type)
 		 (service bluetooth-service-type)
 		 (service gnome-desktop-service-type)
 		 (service openssh-service-type)
