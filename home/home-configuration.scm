@@ -2,14 +2,15 @@
              (gnu services)
 	     (gnu packages)
              (guix gexp)
-	     (gnu packages games)ev
+	     (gnu packages games)
 	     (gnu home services)
 	     (gnu home services sound)
              (gnu home services shells)
 	     (gnu home services desktop)
 	     (gnu home services syncthing)
-	     (gnu home services ssh)
-	     (gnu packages glib))
+	     (gnu services base)
+	     (gnu home services ssh))
+
 (home-environment
   ;; Below is the list of packages that will show up in your
   ;; Home profile, under ~/.guix-home/profile.
@@ -33,7 +34,7 @@
 					   "xdg-desktop-portal-wlr"
 					   "xdg-dbus-proxy"
 					   "shared-mime-info"
-					   (list glib "bin")
+					   "glib:bin"
 					   "wl-clipboard"
 					   "fuzzel"
 
@@ -110,7 +111,6 @@
    (list 
      (service home-pipewire-service-type)
      (service home-dbus-service-type)
-     (udev-rules-service 'steam-devices steam-devices-udev-rules)
      (service home-syncthing-service-type)
      (service home-bash-service-type
 	      (home-bash-configuration
