@@ -122,19 +122,20 @@
 					("XDG_DATA_DIRS" . "$XDG_DATA_DIRS:$HOME/.local/share/flatpak/exports/share")
 
 					;; Set Wayland-specific environment variables
-					("XDG_CURRENT_DESKTOP" . "sway")
+					("XDG_CURRENT_DESKTOP" . "gnome")
 					("XDG_SESSION_TYPE" . "wayland")
 					("MOZ_ENABLE_WAYLAND" . "1")))
 	       (aliases '())
 	       (bashrc (list (local-file "/home/stephen/.bashrc" "bashrc")))
 	       (bash-profile
-		`(,(plain-file "bash-sway-login"
-			       (string-append
-				"if [ -z \"$WAYLAND_DISPLAY\" ] && [ \"$XDG_VTNR\" -eq 1 ]; then\n"
-				"  exec sway\n"
-				"fi\n"))
-		  ,(local-file "/home/stephen/.bash_profile"
-			       "bash_profile")))))
+		`(,(local-file "/home/stephen/.bash_profile"
+			       "bash_profile")
+		  ;; ,(plain-file "bash-sway-login"
+		  ;; 	       (string-append
+		  ;; 		"if [ -z \"$WAYLAND_DISPLAY\" ] && [ \"$XDG_VTNR\" -eq 1 ]; then\n"
+		  ;; 		"  exec sway\n"
+		  ;; 		"fi\n"))
+		  ))))
      (service home-openssh-service-type
 	      (home-openssh-configuration
 	       (hosts

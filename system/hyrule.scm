@@ -67,9 +67,7 @@
 							 %default-substitute-urls))
 						(authorized-keys
 						 (append (list (local-file "./nonguix-signing-key.pub"))
-							 %default-authorized-guix-keys))))
-			    (gdm-service-type config =>
-					      (gdm-configuration (inherit config) (wayland? #t))))))
+							 %default-authorized-guix-keys)))))))
 
 
   ;; ;; Below is the list of system services.  To search for available
