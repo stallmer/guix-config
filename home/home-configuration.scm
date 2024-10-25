@@ -3,7 +3,6 @@
 	     (gnu packages)
              (guix gexp)
 	     (gnu packages games)
-	     (gnu services base)
 	     (gnu home services)
 	     (gnu home services sound)
              (gnu home services shells)
